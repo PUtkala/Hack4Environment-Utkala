@@ -78,11 +78,17 @@ class Window(QtWidgets.QMainWindow):
     def open_file(self):
         webbrowser.open('mapa.html')
 
+    def open_quiz(self):
+        webbrowser.open('http://www.quiz-maker.com/Q462X1J0C')
+
 
     def display_map(self):
         btn_mapa = QtWidgets.QPushButton(self.tr("Mapa"))
         btn_mapa.clicked.connect(self.open_file)
         btn_mapa.setStyleSheet("background-color: #fffffe")
+        btn_quiz = QtWidgets.QPushButton(self.tr("QUIZ"))
+        btn_quiz.clicked.connect(self.open_quiz)
+        btn_quiz.setStyleSheet("background-color: #fffffe")
         btn_ciek = QtWidgets.QPushButton(self.tr("Ciekawostka\n Dnia"), clicked = lambda:self.random_FunFact())
         btn_ciek.setStyleSheet("background-color: #fffffe")
 
@@ -146,6 +152,7 @@ class Window(QtWidgets.QMainWindow):
 
         btn_mapa.setFixedSize(150, 60)
         btn_ciek.setFixedSize(150, 60)
+        btn_quiz.setFixedSize(150, 60)
         self.textBrowser.setFixedSize(250, 300)
 
 
@@ -179,17 +186,21 @@ class Window(QtWidgets.QMainWindow):
         lay_types.addStretch()
 
         button_container = QtWidgets.QWidget()
-        vlay = QtWidgets.QVBoxLayout(button_container)
+        vlay = QtWidgets.QHBoxLayout(button_container)
         vlay.setSpacing(50)
         vlay.addStretch()
         vlay.addWidget(btn_mapa)
+        vlay.addStretch()
+        vlay.addWidget(btn_quiz)
+        vlay.addStretch()
         vlay.addWidget(btn_ciek)
         vlay.addStretch()
-        lay.addWidget(button_container)
+        #lay.addWidget(button_container)
         lay.addStretch()
         lay.addWidget(self.photo)
-        lay.addWidget(self.textBrowser, stretch=1)
+        lay.addWidget(self.textBrowser)
         lay.addStretch()
+        all_lay.addWidget(button_container)
         all_lay.addWidget(lay_container)
         #all_lay.addStretch()
         all_lay.addWidget(types_container)
