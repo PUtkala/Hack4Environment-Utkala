@@ -10,6 +10,7 @@ class Record():
         self.model = properties.model
         self.photo_id = properties.photo_id
         self.result_string = properties.result_string
+        self.color="k."
 
     def load_dataset():
         pass
