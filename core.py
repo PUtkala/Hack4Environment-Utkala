@@ -43,9 +43,10 @@ while idx < max(cluster_count):
 
 final_dict = {}
 for i in dumps:
-    final_dict.update({i.photo_id:{"lat":i.lat,"lon":i.lon,"filename":i.filename}})
+    idefix = list_rec.index(i)
+    final_dict.update({i.photo_id:[{"lat":i.lat,"lon":i.lon,"filename":[i.filename,list_rec[idefix-1].filename,list_rec[idefix+1].filename]}]})
 
-print(final_dict)
+#print(final_dict)
 with open("dumps.json", 'w') as w:
     json.dump(final_dict,w)
 
